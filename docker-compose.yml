@@ -1,0 +1,17 @@
+version: "3"
+services:
+  grpc-server:
+    image: raghukumarm/quarkus-grpc-server-jvm
+    networks:
+      - grpc-net
+    ports:
+      - "9000:9000"
+      - "8888:8080"
+  grpc-client:
+    image: raghukumarm/quarkus-grpc-client-jvm
+    networks:
+      - grpc-net
+    ports:
+      - "8081:8081"
+networks:
+  grpc-net:
