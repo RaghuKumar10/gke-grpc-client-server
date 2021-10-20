@@ -1,4 +1,4 @@
-docker build -t raghukumarm/quarkus-grpc-server-jvm:latest -t raghukumarm/quarkus-grpc-server-jvm:$SHA -f ./quarkus-grpc-server/src/main/docker/Dockerfile.jvm ./quarkus-grpc-server 
+docker build -t raghukumarm/quarkus-grpc-server-jvm:latest -t raghukumarm/quarkus-grpc-server-jvm:$SHA -f ./quarkus-grpc-server/src/main/docker/Dockerfile.prod.jvm ./quarkus-grpc-server 
 docker build -t raghukumarm/quarkus-grpc-client-jvm:latest -t raghukumarm/quarkus-grpc-client-jvm:$SHA -f ./quarkus-grpc-client/src/main/docker/Dockerfile.jvm ./quarkus-grpc-client 
 
 docker push  raghukumarm/quarkus-grpc-server-jvm:latest
