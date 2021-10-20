@@ -9,5 +9,5 @@ docker push  raghukumarm/quarkus-grpc-client-jvm:$SHA
 
 kubectl apply -f k8s
 
-kubectl set image deployments/grpc-server-deployment quarkus-grpc-server=raghukumarm/quarkus-grpc-server-jvm:$SHA
-kubectl set image deployments/grpc-client-deployment quarkus-grpc-client=raghukumarm/quarkus-grpc-client-jvm:$SHA
+kubectl set image deployments/grpc-server-deployment quarkus-grpc-server=raghukumarm/quarkus-grpc-server-jvm:latest
+kubectl set image deployments/grpc-client-deployment quarkus-grpc-client=raghukumarm/quarkus-grpc-client-jvm:latest
