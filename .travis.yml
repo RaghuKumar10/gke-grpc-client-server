@@ -24,12 +24,10 @@ before_install:
 jdk: openjdk11
 
 script:
-  - jdk_switcher use openjdk11
-  # do stuff with OpenJDK 10
-  - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
-  - chmod +x $TRAVIS_BUILD_DIR/install-jdk.sh
-  - export JAVA_HOME=$HOME/openjdk11
-  - $TRAVIS_BUILD_DIR/install-jdk.sh -F 11 --target $JAVA_HOME
+  # - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+  # - chmod +x $TRAVIS_BUILD_DIR/install-jdk.sh
+  # - export JAVA_HOME=$HOME/openjdk11
+  # - $TRAVIS_BUILD_DIR/install-jdk.sh -F 11 --target $JAVA_HOME
   # do stuff with open OpenJDK 11
   - mvn -f ./quarkus-grpc-server/pom.xml install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - mvn -f ./quarkus-grpc-client/pom.xml install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
