@@ -17,6 +17,25 @@ before_install:
   - gcloud container clusters get-credentials grpc-experiments
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
+install:
+  - ./quarkus-grpc-client
+  - ./quarkus-grpc-server
+
+jdk: openjdk11
+
+script:
+  - jdk_switcher use openjdk11
+  # do stuff with OpenJDK 10
+  - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+  - chmod +x $TRAVIS_BUILD_DIR/install-jdk.sh
+  - export JAVA_HOME=$HOME/openjdk11
+  - $TRAVIS_BUILD_DIR/install-jdk.sh -F 11 --target $JAVA_HOME
+  # do stuff with open OpenJDK 11
+  - ./quarkus-grpc-server/mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - ./quarkus-grpc-client/mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - ./quarkus-grpc-server/mvnw package
+  - ./quarkus-grpc-client/mvnw package
+  
 deploy:
   provider: script
   script: bash ./deploy.sh
