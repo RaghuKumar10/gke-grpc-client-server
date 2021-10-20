@@ -31,10 +31,10 @@ script:
   - export JAVA_HOME=$HOME/openjdk11
   - $TRAVIS_BUILD_DIR/install-jdk.sh -F 11 --target $JAVA_HOME
   # do stuff with open OpenJDK 11
-  - ./quarkus-grpc-server/mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  - ./quarkus-grpc-client/mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  - ./quarkus-grpc-server/mvnw package
-  - ./quarkus-grpc-client/mvnw package
+  - mvn install ./quarkus-grpc-server/ -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - mvn install ./quarkus-grpc-client/ -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - mvn package ./quarkus-grpc-server/
+  - mvn package ./quarkus-grpc-client/
 
 deploy:
   provider: script
