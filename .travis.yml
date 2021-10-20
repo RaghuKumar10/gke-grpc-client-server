@@ -17,9 +17,9 @@ before_install:
   - gcloud container clusters get-credentials grpc-experiments
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-install:
-  - ./quarkus-grpc-client
-  - ./quarkus-grpc-server
+# install:
+#   - ./quarkus-grpc-client
+#   - ./quarkus-grpc-server
 
 jdk: openjdk11
 
@@ -35,7 +35,7 @@ script:
   - ./quarkus-grpc-client/mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - ./quarkus-grpc-server/mvnw package
   - ./quarkus-grpc-client/mvnw package
-  
+
 deploy:
   provider: script
   script: bash ./deploy.sh
